@@ -23,7 +23,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "ingest": "tsx -r dotenv/config src/scripts/ingest-data.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.9.5",
@@ -34,10 +35,15 @@
     "@nestjs/graphql": "^12.0.11",
     "@nestjs/mongoose": "^10.0.2",
     "@nestjs/platform-express": "^9.0.0",
+    "@pinecone-database/pinecone": "^1.1.2",
+    "clsx": "^2.0.0",
+    "langchain": "^0.0.179",
     "mongoose": "^8.0.2",
     "mongoose-autopopulate": "^1.1.0",
+    "pdf-parse": "^1.1.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
+    "tsx": "^3.14.0",
     "winston": "^3.11.0"
   },
   "devDependencies": {
@@ -61,7 +67,7 @@
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "4.2.0",
-    "typescript": "^5.0.0"
+    "typescript": "^4.3.5"
   },
   "jest": {
     "moduleFileExtensions": [
