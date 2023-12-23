@@ -1,0 +1,34 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # Voir le calendrier des versions de Node.js prises en charge à https://nodejs.org/en/about/releases/
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v3
+    - name: Utiliser Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Installer les dépendances
+      run: npm install
+    - name: Linter le code
+      run: npm run lint
+    - name: Formater le code
+      run: npm run format
+    # - name: Exécuter les tests
+    #   run: npm test
