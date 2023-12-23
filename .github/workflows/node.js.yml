@@ -13,8 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # Voir le calendrier des versions de Node.js prises en charge à https://nodejs.org/en/about/releases/
+        node-version: [20.x]
 
     steps:
     - name: Checkout du code
@@ -26,9 +25,13 @@ jobs:
         cache: 'npm'
     - name: Installer les dépendances
       run: npm install
+      working-directory: backend 
     - name: Linter le code
       run: npm run lint
+      working-directory: backend 
     - name: Formater le code
       run: npm run format
+      working-directory: backend 
     # - name: Exécuter les tests
     #   run: npm test
+    #   working-directory: backend 
