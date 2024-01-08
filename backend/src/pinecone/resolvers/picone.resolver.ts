@@ -1,5 +1,5 @@
 import { Resolver, Query } from '@nestjs/graphql';
-import { PineconeService } from '../services/picone-ingestion.service';
+import { PineconeService } from '../services/pinecone-ingestion.service';
 
 @Resolver()
 export class PineconeResolver {

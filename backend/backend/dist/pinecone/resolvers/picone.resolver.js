@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PineconeResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
-const picone_ingestion_service_1 = require("../services/picone-ingestion.service");
+const pinecone_ingestion_service_1 = require("../services/pinecone-ingestion.service");
 let PineconeResolver = class PineconeResolver {
     constructor(pineconeService) {
         this.pineconeService = pineconeService;
@@ -36,6 +36,6 @@ __decorate([
 ], PineconeResolver.prototype, "runIngestion", null);
 exports.PineconeResolver = PineconeResolver = __decorate([
     (0, graphql_1.Resolver)(),
-    __metadata("design:paramtypes", [picone_ingestion_service_1.PineconeService])
+    __metadata("design:paramtypes", [pinecone_ingestion_service_1.PineconeService])
 ], PineconeResolver);
 //# sourceMappingURL=picone.resolver.js.map

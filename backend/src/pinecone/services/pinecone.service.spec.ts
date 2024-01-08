@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PineconeService } from './picone-ingestion.service';
+import { PineconeService } from './pinecone-ingestion.service';
 
 describe('PineconeService', () => {
   let pineconeService: PineconeService;
@@ -32,3 +32,4 @@ describe('PineconeService', () => {
     expect(pineconeService.runIngestion).toHaveBeenCalled();
   });
 });
+export { PineconeService };

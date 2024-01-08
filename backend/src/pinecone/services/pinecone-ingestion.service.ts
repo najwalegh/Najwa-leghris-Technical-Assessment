@@ -8,6 +8,7 @@ import { DirectoryLoader } from 'langchain/document_loaders/fs/directory';
 
 @Injectable()
 export class PineconeService {
+  private pineconeIndex: any;
   async runIngestion(): Promise<void> {
     const filePath = 'public/docs';
 

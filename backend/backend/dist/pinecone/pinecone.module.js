@@ -8,14 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PineconeModule = void 0;
 const common_1 = require("@nestjs/common");
-const picone_resolver_1 = require("../resolvers/picone.resolver");
-const picone_ingestion_service_1 = require("../services/picone-ingestion.service");
+const pinecone_ingestion_service_1 = require("./services/pinecone-ingestion.service");
+const service2_service_1 = require("./services/service2.service");
 let PineconeModule = class PineconeModule {
 };
 exports.PineconeModule = PineconeModule;
 exports.PineconeModule = PineconeModule = __decorate([
     (0, common_1.Module)({
-        providers: [picone_resolver_1.PineconeResolver, picone_ingestion_service_1.PineconeService],
+        providers: [pinecone_ingestion_service_1.PineconeService, service2_service_1.ChatProcessingService],
+        exports: [pinecone_ingestion_service_1.PineconeService, service2_service_1.ChatProcessingService],
     })
 ], PineconeModule);
 //# sourceMappingURL=pinecone.module.js.map

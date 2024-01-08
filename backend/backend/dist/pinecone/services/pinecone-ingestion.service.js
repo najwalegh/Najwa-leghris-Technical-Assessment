@@ -49,4 +49,4 @@ exports.PineconeService = PineconeService;
 exports.PineconeService = PineconeService = __decorate([
     (0, common_1.Injectable)()
 ], PineconeService);
-//# sourceMappingURL=picone-ingestion.service.js.map
+//# sourceMappingURL=pinecone-ingestion.service.js.map

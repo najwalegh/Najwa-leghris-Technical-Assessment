@@ -8,24 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const graphql_1 = require("@nestjs/graphql");
 const shared_module_1 = require("./shared/shared.module");
 const app_resolver_1 = require("./app.resolver");
-const pinecone_module_1 = require("./pinecone/models/pinecone.module");
-const apollo_1 = require("@nestjs/apollo");
+const chat_module_1 = require("./chat/chat.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            graphql_1.GraphQLModule.forRoot({
-                autoSchemaFile: true,
-                installSubscriptionHandlers: true,
-                driver: apollo_1.ApolloDriver,
-            }),
-            pinecone_module_1.PineconeModule,
             shared_module_1.SharedModule,
+            chat_module_1.ChatModule,
         ],
         providers: [app_resolver_1.AppResolver],
     })
