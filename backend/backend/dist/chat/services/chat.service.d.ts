@@ -25,7 +25,7 @@
 import { Model } from 'mongoose';
 import { ConfigService } from '@nestjs/config';
 import { ChatModel } from '../chat.model';
-import { ChatProcessingService } from '@/pinecone/services/service2.service';
+import { ChatProcessingService } from '@/pinecone/services/responseService.service';
 export declare class ChatService {
     private readonly chatModel;
     private readonly configService;

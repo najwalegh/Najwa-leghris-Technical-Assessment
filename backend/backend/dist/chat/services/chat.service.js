@@ -18,7 +18,7 @@ const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const config_1 = require("@nestjs/config");
 const chat_model_1 = require("../chat.model");
-const service2_service_1 = require("../../pinecone/services/service2.service");
+const responseService_service_1 = require("../../pinecone/services/responseService.service");
 let ChatService = class ChatService {
     constructor(chatModel, configService, chatProcessingService) {
         this.chatModel = chatModel;
@@ -43,6 +43,6 @@ exports.ChatService = ChatService = __decorate([
     __param(0, (0, mongoose_1.InjectModel)(chat_model_1.ChatModel.name)),
     __metadata("design:paramtypes", [mongoose_2.Model,
         config_1.ConfigService,
-        service2_service_1.ChatProcessingService])
+        responseService_service_1.ChatProcessingService])
 ], ChatService);
 //# sourceMappingURL=chat.service.js.map

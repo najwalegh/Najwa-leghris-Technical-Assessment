@@ -17,9 +17,9 @@ const pinecone_2 = require("langchain/vectorstores/pinecone");
 let ChatProcessingService = class ChatProcessingService {
     async processQuestion(question, messages) {
         try {
-            const chain = await this.initializeModelAndChain();
-            const pastMessages = this.convertMessagesToModelFormat(messages);
-            const response = await this.askQuestionWithChain(question, pastMessages, chain);
+            const chain = await this.initModelAndChain();
+            const pastMessages = this.convertToModelFormat(messages);
+            const response = await this.askQuestion(question, pastMessages, chain);
             console.log('Response:', response);
             return response.text;
         }
@@ -28,28 +28,20 @@ let ChatProcessingService = class ChatProcessingService {
             throw new Error('Failed to ask the question');
         }
     }
-    async initializeModelAndChain() {
+    async initModelAndChain() {
         if (!process.env.PINECONE_INDEX_NAME)
             throw Error('no index');
         const index = pinecone_1.pinecone.Index(process.env.PINECONE_INDEX_NAME);
-        const vectorStore = await pinecone_2.PineconeStore.fromExistingIndex(new openai_1.OpenAIEmbeddings({}), {
-            pineconeIndex: index,
-            textKey: 'text',
-        });
-        const model = new openai_2.ChatOpenAI({
-            modelName: 'gpt-3.5-turbo',
-        });
+        const vectorStore = await pinecone_2.PineconeStore.fromExistingIndex(new openai_1.OpenAIEmbeddings({}), { pineconeIndex: index, textKey: 'text' });
+        const model = new openai_2.ChatOpenAI({ modelName: 'gpt-3.5-turbo' });
         return chains_1.ConversationalRetrievalQAChain.fromLLM(model, vectorStore.asRetriever(), {});
     }
-    convertMessagesToModelFormat(messages) {
+    convertToModelFormat(messages) {
         return messages.map((message, i) => {
             try {
-                if (i % 2 === 0) {
-                    return new schema_1.HumanMessage(message.content);
-                }
-                else {
-                    return new schema_1.AIMessage(message.content);
-                }
+                return i % 2 === 0
+                    ? new schema_1.HumanMessage(message.content)
+                    : new schema_1.AIMessage(message.content);
             }
             catch (error) {
                 console.error(`Error creating message for content: ${message.content}`);
@@ -58,15 +50,12 @@ let ChatProcessingService = class ChatProcessingService {
             }
         });
     }
-    async askQuestionWithChain(question, pastMessages, chain) {
-        return chain.call({
-            question: question,
-            chat_history: pastMessages,
-        });
+    async askQuestion(question, pastMessages, chain) {
+        return chain.call({ question, chat_history: pastMessages });
     }
 };
 exports.ChatProcessingService = ChatProcessingService;
 exports.ChatProcessingService = ChatProcessingService = __decorate([
     (0, common_1.Injectable)()
 ], ChatProcessingService);
-//# sourceMappingURL=service2.service.js.map
+//# sourceMappingURL=responseService.service.js.map
