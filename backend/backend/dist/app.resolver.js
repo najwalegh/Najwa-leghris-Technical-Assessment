@@ -21,10 +21,12 @@ let AppResolver = class AppResolver {
         this.chatService = chatService;
     }
     async addMessage(userId, question) {
+        console.log('backend:');
         const response = await this.chatService.addMessageToStore(userId, question);
         return response;
     }
     async getChatHistory(userId) {
+        console.log('history:');
         const chatHistory = await this.chatService.getChatHistory(userId);
         return chatHistory;
     }

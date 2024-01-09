@@ -16,10 +16,7 @@ let AppModule = class AppModule {
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            shared_module_1.SharedModule,
-            chat_module_1.ChatModule,
-        ],
+        imports: [shared_module_1.SharedModule, chat_module_1.ChatModule],
         providers: [app_resolver_1.AppResolver],
     })
 ], AppModule);

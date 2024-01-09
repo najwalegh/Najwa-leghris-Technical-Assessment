@@ -11,12 +11,14 @@ export class AppResolver {
     @Args('userId') userId: string,
     @Args('question') question: string,
   ): Promise<string> {
+    console.log('backend:');
     const response = await this.chatService.addMessageToStore(userId, question);
     return response;
   }
 
   @Query(() => [ChatModel])
   async getChatHistory(@Args('userId') userId: string): Promise<ChatModel[]> {
+    console.log('history:');
     const chatHistory = await this.chatService.getChatHistory(userId);
     return chatHistory;
   }
